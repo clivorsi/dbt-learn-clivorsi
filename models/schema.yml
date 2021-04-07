@@ -22,7 +22,7 @@ models:
           - not_null
 
   - name: stg_orders
-    description: This model cleans up order data
+    description: "{{ doc('table_events') }}"
     columns:
       - name: order_id
         description: Primary Key
@@ -39,3 +39,10 @@ models:
           - relationships:
               to: ref('stg_customers')
               field: customer_id
+
+  - name: orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
